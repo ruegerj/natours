@@ -84,10 +84,6 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     filteredBody.photo = req.file.filename;
   }
 
-  console.log(req.file.buffer);
-
-  console.log('upadting', filteredBody);
-
   const updatedUser = await User.findByIdAndUpdate(req.user._id, filteredBody, {
     new: true,
     runValidators: true,
