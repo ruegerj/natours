@@ -4,6 +4,8 @@ const authController = require('../controllers/authenticationController');
 
 const viewRouter = express.Router();
 
+viewRouter.use(viewController.alerts);
+
 viewRouter.get('/', authController.isLoggedIn, viewController.getOverview);
 viewRouter.get(
   '/tour/:slug',

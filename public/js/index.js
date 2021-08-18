@@ -4,8 +4,10 @@ import { login, logout } from './auth';
 import { displayMap } from './mapbox';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './bookings';
+import { showAlert } from './alerts';
 
 // DOM elements
+const body = document.querySelector('body');
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.login-form > form.form');
 const userDataForm = document.querySelector('form.form.form-user-data');
@@ -91,4 +93,10 @@ if (bookTourBtn) {
     const { tourId } = e.target.dataset;
     bookTour(tourId);
   });
+}
+
+const alertMessage = body.dataset.alert;
+
+if (alertMessage) {
+  showAlert('success', alertMessage, 20000);
 }
